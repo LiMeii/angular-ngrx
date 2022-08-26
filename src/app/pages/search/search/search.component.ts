@@ -36,7 +36,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.onSearchKeyupListener();
 
         this.searchedKeyword$.subscribe((val) => {
-            this.searchVal = this.router.url === '/search' ? '' : val;
+            if (this.router.url === '/search/result') this.searchVal = val;
         });
     }
 
