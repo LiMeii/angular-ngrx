@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { GitUser } from '../models/search.module';
+import { GitUser } from '../models/search-user.model';
 
 
 @Injectable({ providedIn: 'root' })
 
-export class SearchGitUserService {
+export class SearchUserService {
     constructor(private http: HttpClient) { }
 
     public search(userName: string): Observable<GitUser> {
