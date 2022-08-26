@@ -22,8 +22,6 @@ The search API is refer from 【[Github List users](https://docs.github.com/en/r
 
 ```js
 npm install
-```
-
-```js
 npm start
 ```
+
