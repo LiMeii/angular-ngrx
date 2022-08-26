@@ -1,3 +1,3 @@
-import * as searchActions from './search-user.action';
+import * as searchUserActions from './search-user.action';
 
-export { searchActions };
+export { searchUserActions };

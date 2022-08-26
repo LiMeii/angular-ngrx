@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, switchMap, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { searchActions } from '../actions';
+import { searchUserActions } from '../actions';
 import { SearchUserService } from '../services/search-user.service';
 
 
@@ -13,15 +13,15 @@ export class SearchEffects {
 
     readonly search$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(searchActions.search),
+            ofType(searchUserActions.search),
             switchMap((action) => {
                 return this.searchUserService.search(action?.userName).pipe(
                     map((searchResponse) =>
-                        searchActions.searchSuccess({ searchResponse }),
+                        searchUserActions.searchSuccess({ searchResponse }),
                     ),
                     catchError(() =>
                         of(
-                            searchActions.searchFailed({
+                            searchUserActions.searchFailed({
                                 error: 'failed to get search result',
                             }),
                         ),
