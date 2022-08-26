@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('src/app/pages/search/search.module').then((m) => m.SearchModule)
+    loadChildren: () => import('src/app/pages/search/search-user.module').then((m) => m.SearchUserModule)
   }
 ];
 

@@ -1,0 +1,151 @@
+.search-container {
+  height: 50px;
+}
+
+.search-input {
+  height: 38px;
+  width: 90%;
+  border: none;
+  outline: none;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 16px;
+  margin-top: -4px;
+  background: transparent;
+}
+
+.search-suggestions-container {
+  max-height: 15rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 0.8rem;
+}
+
+.search-divider {
+  border-top: 1px solid #e8eaed;
+  margin: 0 20px 0 20px;
+  padding-bottom: 4px;
+}
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.search-dropdown-title {
+  font-size: 0.9rem;
+  margin: 0 1.5rem 0 1rem;
+  padding: 0.5rem 0;
+  line-height: 1rem;
+  width: 100%;
+}
+
+.search-dropdown-container {
+  cursor: default;
+}
+
+.search-dropdown-container :hover {
+  background-color: #edf0f2;
+}
+
+.search-dropdown-content {
+  padding-left: 0.9rem;
+}
+
+.border {
+  border: 1px #dee2e6;
+}
+
+.border-rounded-pill {
+  border-radius: 24px;
+}
+
+.border-rounded-top {
+  border-radius: 24px 24px 0px 0px;
+}
+
+.border-rounded-bottom {
+  border-radius: 0px 0px 24px 24px;
+}
+
+.search-dropdown-list {
+  display: flex;
+  font-size: 17px;
+  color: #212121;
+  flex: auto;
+  align-items: center;
+  word-break: break-word;
+  padding: 6px 0px;
+}
+
+.loading-icon-container {
+  margin-right: 1rem;
+}
+
+.loader {
+  position: relative;
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+  animation: around 5.4s infinite;
+}
+
+.icons-4 {
+  width: 28px;
+  height: 28px;
+}
+
+.icons-5 {
+  width: 22px;
+  height: 22px;
+}
+
+@keyframes around {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader::after,
+.loader::before {
+  content: "";
+  background: white;
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-width: 2px;
+  border-color: lightgray lightgray transparent transparent;
+  border-style: solid;
+  border-radius: 24px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  animation: around 0.7s ease-in-out infinite;
+}
+
+.loader::after {
+  animation: around 0.7s ease-in-out 0.1s infinite;
+  background: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: darkgray;
+  outline: none;
+}
+
+
+.z-index {
+  z-index: 100
+}
