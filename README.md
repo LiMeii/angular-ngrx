@@ -1,6 +1,6 @@
 # AngularNgrx
 
-The purpose of this demo code is to practice NGRX and learn how to use state, action, effect, reducer, and selector in Angular
+The purpose of this demo code is to practice NGRX and learn how to use state, action, effect, reducer, and selector in Angular14.
 
 ## Description
 It'a simple page used to search github user, and display the result:
