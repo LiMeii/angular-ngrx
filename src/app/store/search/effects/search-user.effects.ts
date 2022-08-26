@@ -17,7 +17,7 @@ export class SearchEffects {
             switchMap((action) => {
                 return this.searchUserService.search(action?.userName).pipe(
                     map((searchResponse) =>
-                        searchUserActions.searchSuccess({ searchResponse }),
+                        searchUserActions.searchSuccess({ searchResult: searchResponse }),
                     ),
                     catchError(() =>
                         of(
