@@ -1,0 +1,55 @@
+.content-container {
+    top: 1.2rem;
+    left: 4.5rem;
+    max-width: 85rem;
+    max-height: 35rem;
+}
+
+.search-wrapper {
+    max-width: 48rem;
+}
+
+.content-container-inner {
+    margin-top: 3.2rem;
+}
+
+.result-divider {
+    border-top: 1px solid #6c6e70;
+    margin: 0.5rem 0 0 0;
+}
+
+.result-container {
+    max-height: 38rem;
+    overflow-y: auto;
+}
+
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.card-info {
+    min-width: 300px;
+    background-color: rgba(255, 255, 255, 0.08)
+}
+
+.card-info:hover {
+    background-color: #6366f1;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: darkgray;
+    outline: none;
+}
