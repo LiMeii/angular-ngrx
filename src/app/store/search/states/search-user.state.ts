@@ -1,13 +1,13 @@
-import { GitUser } from '../models/search-user.model';
+import { SearchResult } from '../models/search-user.model';
 
 export interface State {
     isLoading: boolean;
     error?: string;
-    searchGitUserResponse: GitUser;
+    searchResponse: SearchResult;
 }
 
 export const initialState: State = {
     isLoading: false,
     error: undefined,
-    searchGitUserResponse: {} as GitUser
+    searchResponse: {} as SearchResult
 }

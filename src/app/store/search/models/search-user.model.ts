@@ -17,18 +17,11 @@ export interface GitUser {
     received_events_url: string;
     type: string;
     site_admin: boolean;
-    name: string;
-    company: string;
-    blog: string;
-    location: string;
-    email: string;
-    hireable: string;
-    bio: string;
-    twitter_username: string;
-    public_repos: number;
-    public_gists: number;
-    followers: number;
-    following: number;
-    created_at: string;
-    updated_at: string;
+    score: number;
+}
+
+export interface SearchResult {
+    total_count: number;
+    incomplete_results: boolean;
+    items: GitUser[]
 }
