@@ -15,9 +15,10 @@ export class SearchEffects {
         this.actions$.pipe(
             ofType(searchUserActions.search),
             switchMap((action) => {
+                const searchedKeywords = action?.userName;
                 return this.searchUserService.search(action?.userName).pipe(
                     map((searchResponse) =>
-                        searchUserActions.searchSuccess({ searchResponse }),
+                        searchUserActions.searchSuccess({ searchResult: searchResponse, searchedKeywords: searchedKeywords }),
                     ),
                     catchError(() =>
                         of(

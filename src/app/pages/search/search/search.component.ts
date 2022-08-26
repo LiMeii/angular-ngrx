@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subject, Subscription, merge, of, debounceTime, map, switchMap, distinctUntilChanged, filter } from 'rxjs';
 import { searchUserActions } from 'src/app/store/search/actions';
-import { isLoading } from 'src/app/store/search/selectors';
+import { isLoading, searchedKeywords } from 'src/app/store/search/selectors';
 
 
 @Component({
@@ -24,6 +24,8 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     public isSearchLoading$ = this.store.select(isLoading);
 
+    public searchedKeyword$ = this.store.select(searchedKeywords);
+
     constructor(
         private ngZone: NgZone,
         private store: Store,
@@ -32,6 +34,10 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.onSearchKeyupListener();
+
+        this.searchedKeyword$.subscribe((val) => {
+            if (this.router.url === '/search/result') this.searchVal = val;
+        });
     }
 
     onSearchKeyupListener() {

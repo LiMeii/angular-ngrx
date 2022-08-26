@@ -7,7 +7,11 @@ const featureStateSelector = createFeatureSelector<searchStates.State>(featureke
 
 export const isLoading = createSelector(featureStateSelector, (fs) => fs.isLoading);
 
-export const searchResult = createSelector(featureStateSelector, (fs) => fs.searchResponse);
+export const searchResult = createSelector(featureStateSelector, (fs) => fs.searchResult);
 
-export const searchedGitUserLists = createSelector(searchResult, (data) => data?.items)
+export const searchedGitUserLists = createSelector(searchResult, (data) => data?.items);
+
+export const searchedGitUserCount = createSelector(searchedGitUserLists, (data) => data?.length);
+
+export const searchedKeywords = createSelector(featureStateSelector, (fs) => fs.searchedKeywords);
 

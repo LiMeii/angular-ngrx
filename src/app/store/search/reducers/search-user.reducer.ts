@@ -13,7 +13,8 @@ const _reducer = createReducer<State>(
 
     on(searchUserActions.searchSuccess, (state, action) => ({
         ...state,
-        searchGitUserResponse: action.searchResponse,
+        searchResult: action.searchResult,
+        searchedKeywords: action.searchedKeywords,
         isLoading: false,
         error: undefined
     })),
