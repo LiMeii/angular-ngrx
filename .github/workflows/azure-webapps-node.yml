@@ -2,10 +2,10 @@
 name: JavaScript CI
 
 on:
-  push:
-    branches: ["dev"]
-  # pull_request:
-  #   branches: ["master"]
+  # push:
+  #   branches: ["dev"]
+  pull_request:
+    branches: ["master"]
 
 env:
   AZURE_WEBAPP_NAME: my-app-name   # set this to your application's name
@@ -60,7 +60,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: "HybrisMigratePOC-Test"
+          app-name: ${{ secrets.AZURE_WEBAPP_SERVICE_NAME_FRONTEND }}
           slot-name: "production"
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
