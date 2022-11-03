@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
 
 env:
   AZURE_WEBAPP_NAME: my-app-name   # set this to your application's name
