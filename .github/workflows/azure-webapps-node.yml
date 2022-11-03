@@ -27,15 +27,15 @@ jobs:
         npm run build --if-present
     
     - name: Zip artifact for deployment
-        run: |
-          cd dist
-          zip release.zip ./* -r
+      run: |
+        cd dist
+        zip release.zip ./* -r
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
-        with:
-          name: node-app
-          path: ./dist/release.zip
+    - name: Upload artifact for deployment job
+      uses: actions/upload-artifact@v3
+      with:
+        name: node-app
+        path: ./dist/release.zip
 
   deploy:
     permissions:
