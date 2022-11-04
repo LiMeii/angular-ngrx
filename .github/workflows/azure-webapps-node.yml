@@ -1,11 +1,12 @@
 
-name: JavaScript CI
+name: Build and deploy Angular app to an Azure Web App
 
 on:
   # push:
   #   branches: ["dev"]
   pull_request:
-    branches: ["master"]
+    branches:
+      - master
 
 env:
   AZURE_WEBAPP_NAME: my-app-name   # set this to your application's name
