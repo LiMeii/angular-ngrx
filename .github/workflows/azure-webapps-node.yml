@@ -43,6 +43,9 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ env.NODE_VERSION }}
+        cache: "npm"
+        cache-dependency-path: package-lock.json
+        
     - name: npm install, build, and test
       run: |
         npm install
@@ -96,7 +99,7 @@ jobs:
     needs: deployDev
     environment:
       name: "Production"
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: ${{ steps.deploy-to-webapp-prod.outputs.webapp-url }}
 
     steps:
       - name: Download artifact from build job
@@ -108,7 +111,7 @@ jobs:
         run: unzip release.zip
 
       - name: "Deploy to Azure WebApp"
-        id: deploy-to-webapp
+        id: deploy-to-webapp-prod
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_SERVICE_NAME_PROD }}
