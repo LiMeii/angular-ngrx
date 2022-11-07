@@ -91,7 +91,7 @@ jobs:
   deployProd:
     name: Deploy to Production
     permissions:
-    contents: none
+      contents: none
     runs-on: ubuntu-latest
     needs: deployDev
     environment:
