@@ -12,6 +12,9 @@ on:
       azure-publish-profile-name:
         required: true
         type: string
+      azure-webapp-package-path:
+        required: true
+        type: string
 
 jobs:
   deploy:
@@ -24,8 +27,9 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - run: echo "🎉 azure-webapp-name ${{ inputs.azure-webapp-name }}"
-      - run: echo "🎉 azure-publish-profile-name ${{ inputs.azure-publish-profile-name }}"
+      - run: echo "🎉 azure webapp name is ${{ inputs.azure-webapp-name }}"
+      - run: echo "🎉 azure publish profile name is ${{ inputs.azure-publish-profile-name }}"
+      - run: echo "💡 get azure webapp name from secrets ${{ secrets.inputs.azure-webapp-name }}"
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
@@ -41,4 +45,4 @@ jobs:
           app-name: ${{ secrets.AZURE_WEBAPP_SERVICE_NAME }}
           slot-name: "production"
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          package: ${{ inputs.azure-webapp-package-path }}
