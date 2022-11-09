@@ -24,9 +24,9 @@ on:
         description: 'Environment to run tests against'
         type: environment
         required: true
-  # pull_request:
-  #   branches:
-  #     - master
+        # pull_request:
+        #   branches:
+        #     - master
 
 env:
   AZURE_WEBAPP_NAME: my-app-name   # set this to your application's name
@@ -69,6 +69,7 @@ jobs:
     uses: ./.github/workflows/deployment.yml
     with:
       target: ${{ matrix.target }}
+      target-env: ${{ matrix.target }}
 
   # deployDev:
   #   name: Deploy to Dev
