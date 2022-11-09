@@ -12,9 +12,12 @@ on:
       azure-publish-profile-name:
         required: true
         type: string
-      # azure-webapp-package-path:
-      #   required: true
-      #   type: string
+    secrets:
+      AZURE_WEBAPP_SERVICE_NAME:
+        required: true
+      AZURE_WEBAPP_PUBLISH_PROFILE:
+        required: true
+
 
 jobs:
   deploy:
