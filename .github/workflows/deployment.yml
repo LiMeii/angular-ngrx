@@ -26,11 +26,12 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: ${{ inputs.target-env }}
-      url: 
+      # url: ${{ steps.step_id.outputs.url_output }}
 
     steps:
       - run: echo "🎉 target evn ${{ inputs.target-env}}"
       - run: echo "💡 get azure webapp name from secrets ${{ secrets.AZURE_WEBAPP_SERVICE_NAME }}"
+
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
@@ -40,17 +41,17 @@ jobs:
         run: unzip release.zip
 
       - name: "Deploy to Azure Dev WebApp"
-        if: false
+        if: ${{ inputs.target-env }} == 'Development'
         id: deploy-to-webapp-dev
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_SERVICE_NAME }}
-          slot-name: "production"
+          slot-name: "dev"
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: '.'
 
       - name: "Deploy to Azure Prod WebApp"
-        if: false
+        if: ${{ inputs.target-env }} == 'Production'
         id: deploy-to-webapp-prod
         uses: azure/webapps-deploy@v2
         with:
