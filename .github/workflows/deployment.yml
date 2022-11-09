@@ -6,17 +6,16 @@ on:
       target-env:
         required: true
         type: string
-      azure-webapp-name:
-        required: true
-        type: string
-      azure-publish-profile-name:
-        required: true
-        type: string
     secrets:
       AZURE_WEBAPP_SERVICE_NAME:
         required: true
       AZURE_WEBAPP_PUBLISH_PROFILE:
         required: true
+      AZURE_WEBAPP_SERVICE_NAME_PROD:
+        required: true
+      AZURE_WEBAPP_PUBLISH_PROFILE_PROD:
+        required: true
+
 
 
 jobs:
@@ -27,12 +26,11 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: ${{ inputs.target-env }}
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: 
 
     steps:
-      - run: echo "🎉 azure webapp name is ${{ inputs.azure-webapp-name }}"
-      - run: echo "🎉 azure publish profile name is ${{ inputs.azure-publish-profile-name }}"
-      - run: echo "💡 get azure webapp name from secrets ${{ secrets.inputs.azure-webapp-name }}"
+      - run: echo "🎉 target evn ${{ inputs.target-env}}"
+      - run: echo "💡 get azure webapp name from secrets ${{ secrets.AZURE_WEBAPP_SERVICE_NAME }}"
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
@@ -41,11 +39,21 @@ jobs:
       - name: unzip artifact for deployment
         run: unzip release.zip
 
-      - name: "Deploy to Azure WebApp"
-        id: deploy-to-webapp
+      - name: "Deploy to Azure Dev WebApp"
+        if: true
+        id: deploy-to-webapp-dev
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_SERVICE_NAME }}
           slot-name: "production"
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: '.'
+
+      - name: "Deploy to Azure Prod WebApp"
+        id: deploy-to-webapp-prod
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ secrets.AZURE_WEBAPP_SERVICE_NAME_PROD }}
+          slot-name: "production"
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_PROD }}
           package: '.'
