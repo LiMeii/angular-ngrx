@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - run: echo "🎉 target evn ${{ inputs.target-env}}"
-      - run: echo "🎉 target evn inputs.target-env
+      - run: echo "🎉 target evn inputs.target-env"
       - run: echo "💡 get azure webapp name from secrets ${{ secrets.AZURE_WEBAPP_SERVICE_NAME }}"
       - run: echo "🍏 is Dev  ${{ inputs.target-env }} == 'Development'"
       - run: echo "🐧 is Prod  ${{ inputs.target-env }} == 'Production'"
