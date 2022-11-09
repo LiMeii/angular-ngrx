@@ -64,6 +64,7 @@ jobs:
 
   ReuseableMatrixJobForDeployment:
     strategy:
+      fail-fast: true
       matrix:
         target: [Development, Production ]
     uses: ./.github/workflows/deployment.yml
