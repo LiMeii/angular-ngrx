@@ -71,6 +71,9 @@ jobs:
     uses: ./.github/workflows/deployment.yml
     with:
       target-env: ${{ matrix.target }}
+      azure-webapp-name: ${{ secrets.AZURE_WEBAPP_SERVICE_NAME_${{matrix.target}} }}
+      azure-publish-profile-name: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_${{matrix.target}} }}
+
 
   # deployDev:
   #   name: Deploy to Dev

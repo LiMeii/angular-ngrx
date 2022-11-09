@@ -6,9 +6,12 @@ on:
       target-env:
         required: true
         type: string
-    # secrets:
-    #   token:
-    #     required: true
+      azure-webapp-name:
+        required: true
+        type: string
+      azure-publish-profile-name:
+        required: true
+        type: string
 
 jobs:
   deploy:
@@ -16,12 +19,13 @@ jobs:
     permissions:
       contents: none
     runs-on: ubuntu-latest
-    # needs: build
     environment:
       name: ${{ inputs.target-env }}
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+      - run: echo "🎉 azure-webapp-name: ${{ inputs.azure-webapp-name }} ."
+      - run: echo "🎉 azure-publish-profile-name: ${{ inputs.azure-publish-profile-name }} ."
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
