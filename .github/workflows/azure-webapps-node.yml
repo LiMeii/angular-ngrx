@@ -68,7 +68,6 @@ jobs:
         target: [Development, Production ]
     uses: ./.github/workflows/deployment.yml
     with:
-      target: ${{ matrix.target }}
       target-env: ${{ matrix.target }}
 
   # deployDev:
