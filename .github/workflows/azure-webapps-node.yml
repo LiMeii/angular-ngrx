@@ -62,14 +62,19 @@ jobs:
         name: node-app
         path: ./dist/release.zip
 
-  ReuseableMatrixJobForDeployment:
-    strategy:
-      fail-fast: true
-      matrix:
-        target: [Development, Production ]
-    uses: ./.github/workflows/deployment.yml
-    with:
-      target-env: ${{ matrix.target }}
+    - name: deploy to dev
+      uses: ./.github/workflows/deployment.yml
+      with:
+        target-env: Development
+
+  # ReuseableMatrixJobForDeployment:
+  #   strategy:
+  #     fail-fast: true
+  #     matrix:
+  #       target: [Development, Production ]
+  #   uses: ./.github/workflows/deployment.yml
+  #   with:
+  #     target-env: ${{ matrix.target }}
 
   # deployDev:
   #   name: Deploy to Dev
