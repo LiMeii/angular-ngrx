@@ -11,14 +11,6 @@ on:
     #     required: true
 
 jobs:
-  triage:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/labeler@v4
-      with:
-        repo-token: ${{ secrets.token }}
-        configuration-path: ${{ inputs.target-env }}
-
   deploy:
     name: Deploy to ${{ inputs.target-env }}
     permissions:
