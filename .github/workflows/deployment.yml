@@ -24,8 +24,8 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - run: echo "🎉 azure-webapp-name: ${{ inputs.azure-webapp-name }} ."
-      - run: echo "🎉 azure-publish-profile-name: ${{ inputs.azure-publish-profile-name }} ."
+      - run: echo "🎉 azure-webapp-name ${{ inputs.azure-webapp-name }}"
+      - run: echo "🎉 azure-publish-profile-name ${{ inputs.azure-publish-profile-name }}"
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
